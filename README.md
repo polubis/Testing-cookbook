@@ -23,6 +23,24 @@ rerender(<ChartWrapper title="">Content</ChartWrapper>);
 expect(screen.queryByText('My chart')).not.toBeInTheDocument();
 ```
 
+## Spying functions and mocking implementations
+
+### Spy and mock function passsed as argument
+
+```js
+ const handleRetrySpy = jest.fn().mockImplementation(() => {});
+
+render(
+    <ChartWrapper error="Error" handleGetData={handleRetrySpy}>
+        Content
+    </ChartWrapper>
+);
+
+fireEvent.click(screen.getByText('Retry'));
+
+expect(handleRetrySpy).toHaveBeenCalledTimes(1);
+```
+
 ## Spying and mocking modules
 
 ### Mock module and mock implemenetation for all tests
