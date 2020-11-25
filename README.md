@@ -98,3 +98,17 @@ Always clean mocks after each test.
     jest.clearAllMocks();
 });
 ```
+
+## Test error throws
+
+### Test error with builded in toThrow
+
+```js
+const _INVALID_VALUES_ = [null, undefined, '', NaN, 0, false];
+
+_INVALID_VALUES_.forEach(value => {
+    expect(() => AxiosFacade.onFailure(value)).toThrow(
+        'Invalid error payload object in middleware'
+    );
+});
+```
